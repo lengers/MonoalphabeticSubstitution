@@ -61,15 +61,18 @@ public class MainActivity extends AppCompatActivity {
         } else if (cipherAlphabet.length != cleanedAlphabet.length) {
             Toast.makeText(MainActivity.this, "Some characters seem to occur more than just once in your alphabet.", Toast.LENGTH_LONG).show();
             return output;
-        } else {
+        } else if (cipherAlphabetString.matches("([A-Z]{26})")) {
             for (char c : inputTextString) {
                 output = output + (encrypt ?
-                cipherAlphabetString.charAt(((int) c) - 65) :
-                (char) (cipherAlphabetString.indexOf(c) + 65)
+                        cipherAlphabetString.charAt(((int) c) - 65) :
+                        (char) (cipherAlphabetString.indexOf(c) + 65)
                 );
             }
 
             return output.toLowerCase();
+        } else {
+            Toast.makeText(MainActivity.this, "Your alphabet contains characters that I do not understand.", Toast.LENGTH_LONG).show();
+            return output;
         }
     }
 
