@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (cipherAlphabet.length != cleanedAlphabet.length) {
             Toast.makeText(MainActivity.this, "Some characters seem to occur more than just once in your alphabet.", Toast.LENGTH_LONG).show();
             return output;
-        } else if (cipherAlphabetString.matches("([A-Z]{26})")) {
+        } else if (cipherAlphabetString.matches("(^[A-Z]{26}$)")) {
             for (char c : inputTextString) {
                 output = output + (encrypt ?
                         cipherAlphabetString.charAt(((int) c) - 65) :
